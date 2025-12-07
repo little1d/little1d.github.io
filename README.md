@@ -1,12 +1,8 @@
-<div align="center">
-  <img src="./logo.png" alt="PRISM Logo" height="100"/>
-</div>
+# PRISM (fork)
 
-# PRISM
+**English** · [中文](README_cn.md) · [Demo](https://prism-demo.pages.dev)
 
-**English** · [中文](README_cn.md) · [Demo](https://prism-demo.pages.dev)  · [Changelog](CHANGELOG.md)
-
-**If you like this project, please give it a star ⭐️**
+> This repository is a personal fork maintained by **little1d**, based on the excellent [xyjoey/PRISM](https://github.com/xyjoey/PRISM). Huge thanks to the original authors and contributors — this fork keeps the core functionality and will evolve independently for my own use.
 
 PRISM stands for **P**ortfolio & **R**esearch **I**nterface **S**ite **M**aker. It is a modern, configurable, and high-performance personal website template built with Next.js, Tailwind CSS, and TypeScript. It is designed for researchers, developers, and academics to showcase their work, publications, and portfolio with ease.
 
@@ -35,8 +31,8 @@ PRISM stands for **P**ortfolio & **R**esearch **I**nterface **S**ite **M**aker. 
 1.  **Clone the repository:**
 
     ```bash
-    git clone https://github.com/xyjoey/PRISM.git
-    cd PRISM
+    git clone https://github.com/little1d/little1d.github.io.git
+    cd little1d.github.io
     ```
 
 2.  **Install dependencies:**
