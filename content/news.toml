@@ -1,7 +1,7 @@
 [[news]]
 date = "2025-11"
-content = "Our work has been accepted by a prestigious journal 🎉"
+content = "Our work [QCBench](https://pubs.acs.org/doi/10.1021/acs.jcim.5c02033) has been accepted by JCIM 🎉, Congratulations to Jiaqing Xie!"
 
 [[news]]
-date = "2025-09"
-content = "Starting my PhD at the University of Example"
+date = "2025-8"
+content = "Our tool [SpectrumLab](https://github.com/little1d/SpectrumLab) is now open source! A pioneering unified platform designed to systematize and accelerate deep learning research in spectroscopy."

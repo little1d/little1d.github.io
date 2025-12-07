@@ -1,29 +1,32 @@
 [site]
-title = "Jiale Liu"
-description = "PhD student at the University of Example."
+title = "Yang Zhuo"
+# description = "PhD student at the Southeast University & Shanghai Innovation Institute."
+description = "Undergraduate Student at Xidian University"
 favicon = "/favicon.svg"
-last_updated = "November 18, 2025"
+last_updated = "December 26, 2025"
 
 [author]
-name = "Jiale Liu"
-title = "PhD Student"
-institution = "University of Example"
-avatar = "/bio.jpg"
+name = "Yang Zhuo"
+title = "Undergraduate Student"
+institution = "Xidian University"
+avatar = "/bio.png"
 
 [social]
 # Contact information (leave blank or delete to hide)
 
-email = "john.doe@example.com"
-location = "City, Country"
+email = "yzachary1551@gmail.com"
+location = "Shanghai, China"
 location_url = "https://maps.google.com"
 location_details = [
-  "Room 123, Science Building,",
-  "University Avenue, City, Country"
+  # "Room 123, Science Building,",
+  "Shanghai Artificial Intelligence Laboratory, Shanghai, China",
 ]
-google_scholar = "https://scholar.google.com"
-orcid = "https://orcid.org"
-github = "https://github.com"
-linkedin = "https://linkedin.com"
+google_scholar = "https://scholar.google.com/citations?user=MB94fgYAAAAJ"
+orcid = "https://orcid.org/my-orcid?orcid=0009-0001-9298-2827"
+github = "https://github.com/little1d"
+wechat = "y17652333891"
+wechat_qr = "/wechat_qr.jpg"
+# linkedin = "https://linkedin.com"
 
 [features]
 # Show a like button on the about page
@@ -44,23 +47,23 @@ type = "page"
 target = "publications"
 href = "/publications"
 
-[[navigation]]
-title = "Teaching"
-type = "page"
-target = "teaching"
-href = "/teaching"
+# [[navigation]]
+# title = "Teaching"
+# type = "page"
+# target = "teaching"
+# href = "/teaching"
 
-[[navigation]]
-title = "Awards"
-type = "page"
-target = "awards"
-href = "/awards"
+# [[navigation]]
+# title = "Awards"
+# type = "page"
+# target = "awards"
+# href = "/awards"
 
-[[navigation]]
-title = "Services"
-type = "page"
-target = "services"
-href = "/services"
+# [[navigation]]
+# title = "Services"
+# type = "page"
+# target = "services"
+# href = "/services"
 
 [[navigation]]
 title = "CV"

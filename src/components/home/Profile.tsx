@@ -11,7 +11,7 @@ import {
 } from '@heroicons/react/24/outline';
 import { MapPinIcon as MapPinSolidIcon, EnvelopeIcon as EnvelopeSolidIcon } from '@heroicons/react/24/solid';
 import { HeartIcon as HeartSolidIcon } from '@heroicons/react/24/solid';
-import { Github, Linkedin, Pin } from 'lucide-react';
+import { Github, Linkedin, Pin, QrCode } from 'lucide-react';
 import { SiteConfig } from '@/lib/config';
 
 // Custom ORCID icon component
@@ -41,7 +41,9 @@ export default function Profile({ author, social, features, researchInterests }:
     const [isAddressPinned, setIsAddressPinned] = useState(false);
     const [showEmail, setShowEmail] = useState(false);
     const [isEmailPinned, setIsEmailPinned] = useState(false);
-    const [lastClickedTooltip, setLastClickedTooltip] = useState<'email' | 'address' | null>(null);
+    const [showWechat, setShowWechat] = useState(false);
+    const [isWechatPinned, setIsWechatPinned] = useState(false);
+    const [lastClickedTooltip, setLastClickedTooltip] = useState<'email' | 'address' | 'wechat' | null>(null);
 
     // Check local storage for user's like status
     useEffect(() => {
@@ -99,6 +101,12 @@ export default function Profile({ author, social, features, researchInterests }:
             name: 'LinkedIn',
             href: social.linkedin,
             icon: Linkedin,
+        }] : []),
+        ...(social.wechat ? [{
+            name: 'WeChat',
+            href: social.wechat_qr || '#',
+            icon: QrCode,
+            isWechat: true,
         }] : []),
     ];
 
@@ -278,6 +286,89 @@ export default function Profile({ author, social, features, researchInterests }:
                                                         <span className="hidden sm:inline">Send Email</span>
                                                     </a>
                                                 </div>
+                                            </div>
+                                            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-neutral-800"></div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </div>
+                        );
+                    }
+                    if (link.isWechat) {
+                        return (
+                            <div key={link.name} className="relative">
+                                <button
+                                    onMouseEnter={() => {
+                                        if (!isWechatPinned) setShowWechat(true);
+                                        setLastClickedTooltip('wechat');
+                                    }}
+                                    onMouseLeave={() => !isWechatPinned && setShowWechat(false)}
+                                    onClick={() => {
+                                        setIsWechatPinned(!isWechatPinned);
+                                        setShowWechat(!isWechatPinned);
+                                        setLastClickedTooltip('wechat');
+                                    }}
+                                    className={`p-2 sm:p-2 transition-colors duration-200 ${isWechatPinned
+                                        ? 'text-accent'
+                                        : 'text-neutral-600 dark:text-neutral-400 hover:text-accent'
+                                        }`}
+                                    aria-label={link.name}
+                                >
+                                    <QrCode className="h-5 w-5" />
+                                </button>
+
+                                <AnimatePresence>
+                                    {(showWechat || isWechatPinned) && (
+                                        <motion.div
+                                            initial={{ opacity: 0, y: 10, scale: 0.8 }}
+                                            animate={{ opacity: 1, y: -10, scale: 1 }}
+                                            exit={{ opacity: 0, y: -20, scale: 0.8 }}
+                                            className={`absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full bg-neutral-800 text-white px-5 py-4 rounded-lg text-sm font-medium shadow-lg max-w-[95vw] sm:max-w-[260px] w-[120px] sm:w-[300px] whitespace-normal z-20`}
+                                            onMouseEnter={() => {
+                                                if (!isWechatPinned) setShowWechat(true);
+                                                setLastClickedTooltip('wechat');
+                                            }}
+                                            onMouseLeave={() => !isWechatPinned && setShowWechat(false)}
+                                        >
+                                            <div className="text-center space-y-2">
+                                                <div className="flex items-center justify-center space-x-2">
+                                                    <p className="font-semibold">WeChat</p>
+                                                </div>
+                                                {social.wechat && (
+                                                    <p className="text-xs text-neutral-300 break-all">{social.wechat}</p>
+                                                )}
+                                                {social.wechat_qr && (
+                                                    <a
+                                                        href={social.wechat_qr}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="block"
+                                                    >
+                                                        <div className="relative mx-auto overflow-hidden rounded-md border border-neutral-700 bg-white hover:scale-[1.02] transition-transform w-full max-w-[240px]">
+                                                            <Image
+                                                                src={social.wechat_qr}
+                                                                alt="WeChat QR"
+                                                                width={120}
+                                                                height={120}
+                                                                className="object-contain w-full h-auto"
+                                                            />
+                                                        </div>
+                                                        <p className="mt-1 text-[11px] text-neutral-300 underline underline-offset-4 text-center">
+                                                            Click to view full size
+                                                        </p>
+                                                    </a>
+                                                )}
+                                                {!social.wechat_qr && link.href && link.href !== '#' && (
+                                                    <a
+                                                        href={link.href}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="inline-flex items-center justify-center space-x-2 bg-accent hover:bg-accent-dark text-white px-3 py-1 rounded-md text-xs font-medium transition-colors duration-200"
+                                                    >
+                                                        <QrCode className="h-4 w-4" />
+                                                        <span>Open QR</span>
+                                                    </a>
+                                                )}
                                             </div>
                                             <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-neutral-800"></div>
                                         </motion.div>

@@ -1,26 +1,32 @@
 ## Education
 
-**The University of Example**, PhD in Natural Science, *2025 - Present*
-- Research focus: Mathematical Principles of Natural Philosophy
-- Supervisor: Prof. Advisor One and Dr. Advisor Two
+**Southeast University (SEU)**, Ph.D. Student (Incoming), *Starting 2026*
 
-**The University of Example**, BSc in Natural Science, *2021 - 2025*
-- Graduated with First Class Honours
+- Jointly trained with **Shanghai Innovation Institute**.
+- Supervisor: Prof. Tianfan Fu Beilun Wang and Yuqiang Li.
+
+**Xidian University**, B.Eng. in Artificial Intelligence, *2022 - 2026*
+
+- School of Artificial Intelligence.
 
 ## Experience
 
-**Example Role**
-Company/Institution
-*2023 - 2024*
-- Description of key responsibilities and achievements.
-- Utilized skills to solve problems.
+**Research Intern**
+Shanghai Artificial Intelligence Laboratory (Shanghai AI Lab)
+*Jan 2025 - Present*
 
-## Skills
+- Member of the **AI for Science Center**.
+- Conducting research on **AI for Spectroscopy**.
 
-- **Programming:** Python, C++, MATLAB, LaTeX
-- **Data Analysis:** Pandas, NumPy, SciPy
-- **Languages:** English (Native), French (Fluent)
+**Research Member**
+GeekTech Studio, Xidian University
+*May 2023 - Jul 2024*
+
+- **Personal Note:** This was the most memorable and joyous period of my undergraduate years. I learned extensively from outstanding senior students who guided me through the world of technology.
+- 🚀 **Recommendation:** I highly recommend checking out **[SwanLab](https://swanlab.cn)**, an amazing lightweight experiment tracking tool developed by our team.
 
 ## Awards & Honors
 
-- **First Prize in Example Competition** - Committee of Example (*2024*)
+- **National Scholarship** - Ministry of Education of China (*2023*)
+  - *Awarded to the top 0.2% of undergraduate students nationwide.*
+- **First-Class Scholarship** - Xidian University (*2022*)

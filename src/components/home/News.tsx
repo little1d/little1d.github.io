@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import ReactMarkdown from 'react-markdown';
 
 export interface NewsItem {
     date: string;
@@ -24,7 +25,31 @@ export default function News({ items, title = 'News' }: NewsProps) {
                 {items.map((item, index) => (
                     <div key={index} className="flex items-start space-x-3">
                         <span className="text-xs text-neutral-500 mt-1 w-16 flex-shrink-0">{item.date}</span>
-                        <p className="text-sm text-neutral-700">{item.content}</p>
+                        <div className="prose prose-sm dark:prose-invert max-w-none text-sm text-neutral-700">
+                            <ReactMarkdown
+                                components={{
+                                    a: (props) => {
+                                        const { node: _node, ...rest } = props;
+                                        void _node;
+                                        return (
+                                            <a
+                                                {...rest}
+                                                className="text-accent hover:underline font-medium"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            />
+                                        );
+                                    },
+                                    p: (props) => {
+                                        const { node: _node, ...rest } = props;
+                                        void _node;
+                                        return <p {...rest} className="m-0" />;
+                                    },
+                                }}
+                            >
+                                {item.content}
+                            </ReactMarkdown>
+                        </div>
                     </div>
                 ))}
             </div>
