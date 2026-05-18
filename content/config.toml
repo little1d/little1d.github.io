@@ -3,7 +3,7 @@ title = "Yang Zhuo"
 # description = "PhD student at the Southeast University & Shanghai Innovation Institute."
 description = "Undergraduate Student at Xidian University"
 favicon = "/favicon.svg"
-last_updated = "December 26, 2025"
+last_updated = "May 18, 2026"
 
 [author]
 name = "Yang Zhuo"
@@ -19,7 +19,7 @@ location = "Shanghai, China"
 location_url = "https://maps.google.com"
 location_details = [
   # "Room 123, Science Building,",
-  "Shanghai Artificial Intelligence Laboratory, Shanghai, China",
+  "Shanghai Innovation Institute, Shanghai, China",
 ]
 google_scholar = "https://scholar.google.com/citations?user=MB94fgYAAAAJ"
 orcid = "https://orcid.org/my-orcid?orcid=0009-0001-9298-2827"
@@ -32,8 +32,26 @@ wechat_qr = "/wechat_qr.jpg"
 # Show a like button on the about page
 enable_likes = true
 
+# Show the visitor map below the like button
+enable_visitor_map = true
+# ClustrMaps JavaScript widget.
+visitor_map_script_src = "https://clustrmaps.com/map_v2.js?d=xSCUrosanbtv17O_BGtFGdYHgdFGpO41o2Udu8giehw&cl=ffffff&w=a"
+visitor_map_link = "https://clustrmaps.com/site/1ca16"
+
 # Display all subpages on a single page
 enable_one_page_mode = false
+
+[i18n]
+enabled = true
+locales = ["en", "zh"]
+default_locale = "en"
+mode = "auto"
+persist = true
+switcher = true
+
+[i18n.labels]
+en = "EN"
+zh = "中文"
 
 [[navigation]]
 title = "About"

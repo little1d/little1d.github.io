@@ -198,6 +198,25 @@ body {
   padding: 1.5rem;
 }
 
+.visitor-map-widget img,
+.visitor-map-widget iframe,
+.visitor-map-widget canvas,
+.visitor-map-widget svg {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.375rem;
+}
+
+.visitor-map-widget #clustrmaps-widget-v2 {
+  max-width: 100%;
+}
+
+.visitor-map-widget a {
+  display: inline-flex;
+  justify-content: center;
+  max-width: 100%;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

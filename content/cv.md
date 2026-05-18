@@ -3,7 +3,7 @@
 **Southeast University (SEU)**, Ph.D. Student (Incoming), *Starting 2026*
 
 - Jointly trained with **Shanghai Innovation Institute**.
-- Supervisor: Prof. Tianfan Fu Beilun Wang and Yuqiang Li.
+- Supervisors: Prof. Tianfan Fu and Prof. Beilun Wang.
 
 **Xidian University**, B.Eng. in Artificial Intelligence, *2022 - 2026*
 
@@ -12,8 +12,14 @@
 ## Experience
 
 **Research Intern**
+Shanghai Innovation Institute / Fudan NLP, OpenMOSS Group
+*Mar 2026 - Present*
+
+- Working on **agents for antibody design**.
+
+**Research Intern**
 Shanghai Artificial Intelligence Laboratory (Shanghai AI Lab)
-*Jan 2025 - Present*
+*Jan 2025 - Mar 2026*
 
 - Member of the **AI for Science Center**.
 - Conducting research on **AI for Spectroscopy**.

@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { parse } from 'smol-toml';
+import type { I18nConfig } from '@/types/i18n';
 
 export interface SiteConfig {
     site: {
@@ -30,6 +31,9 @@ export interface SiteConfig {
     };
     features: {
         enable_likes: boolean;
+        enable_visitor_map?: boolean;
+        visitor_map_script_src?: string;
+        visitor_map_link?: string;
         enable_one_page_mode?: boolean;
     };
     navigation: Array<{
@@ -38,7 +42,7 @@ export interface SiteConfig {
         target: string;
         href: string;
     }>;
-    sections: Array<{
+    sections?: Array<{
         id: string;
         type: 'markdown' | 'publications' | 'list' | 'cards';
         source?: string;
@@ -46,18 +50,76 @@ export interface SiteConfig {
         filter?: string;
         limit?: number;
     }>;
+    i18n?: I18nConfig;
 }
 
-const CONFIG_PATH = path.join(process.cwd(), 'content', 'config.toml');
+const DEFAULT_CONTENT_DIR = 'content';
 
-export function getConfig(): SiteConfig {
+function normalizeLocale(locale: string): string {
+    return locale.trim().replace('_', '-').toLowerCase();
+}
+
+function readConfigFromPath(configPath: string): Partial<SiteConfig> | null {
     try {
-        const fileContent = fs.readFileSync(CONFIG_PATH, 'utf-8');
-        const config = parse(fileContent) as unknown as SiteConfig;
-        return config;
+        const fileContent = fs.readFileSync(configPath, 'utf-8');
+        return parse(fileContent) as unknown as Partial<SiteConfig>;
+    } catch (error) {
+        if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
+            return null;
+        }
+        throw error;
+    }
+}
+
+function mergeConfig(base: SiteConfig, localized?: Partial<SiteConfig> | null): SiteConfig {
+    if (!localized) return base;
+
+    return {
+        ...base,
+        site: {
+            ...base.site,
+            ...(localized.site || {}),
+        },
+        author: {
+            ...base.author,
+            ...(localized.author || {}),
+        },
+        social: {
+            ...base.social,
+            ...(localized.social || {}),
+        },
+        features: base.features,
+        navigation: localized.navigation || base.navigation,
+        sections: localized.sections || base.sections,
+        i18n: base.i18n,
+    };
+}
+
+function getDefaultConfig(): SiteConfig {
+    const defaultPath = path.join(process.cwd(), DEFAULT_CONTENT_DIR, 'config.toml');
+    const parsed = readConfigFromPath(defaultPath);
+
+    if (!parsed) {
+        throw new Error('Failed to load content/config.toml');
+    }
+
+    return parsed as SiteConfig;
+}
+
+export function getConfig(locale?: string): SiteConfig {
+    try {
+        const baseConfig = getDefaultConfig();
+
+        if (!locale) {
+            return baseConfig;
+        }
+
+        const localizedPath = path.join(process.cwd(), `${DEFAULT_CONTENT_DIR}_${normalizeLocale(locale)}`, 'config.toml');
+        const localizedConfig = readConfigFromPath(localizedPath);
+
+        return mergeConfig(baseConfig, localizedConfig);
     } catch (error) {
         console.error('Error loading config:', error);
-        // Return a default config or throw
-        throw new Error('Failed to load content/config.toml');
+        throw new Error('Failed to load configuration');
     }
 }

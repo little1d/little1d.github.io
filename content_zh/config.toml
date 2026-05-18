@@ -1,0 +1,42 @@
+[site]
+title = "Yang Zhuo"
+description = "西安电子科技大学人工智能专业本科生"
+favicon = "/favicon.svg"
+last_updated = "2026 年 5 月 18 日"
+
+[author]
+name = "Yang Zhuo"
+title = "本科生"
+institution = "西安电子科技大学"
+avatar = "/bio.png"
+
+[social]
+email = "yzachary1551@gmail.com"
+location = "上海，中国"
+location_url = "https://maps.google.com"
+location_details = [
+  "上海创智学院，上海，中国",
+]
+google_scholar = "https://scholar.google.com/citations?user=MB94fgYAAAAJ"
+orcid = "https://orcid.org/my-orcid?orcid=0009-0001-9298-2827"
+github = "https://github.com/little1d"
+wechat = "y17652333891"
+wechat_qr = "/wechat_qr.jpg"
+
+[[navigation]]
+title = "关于"
+type = "page"
+target = "about"
+href = "/"
+
+[[navigation]]
+title = "论文"
+type = "page"
+target = "publications"
+href = "/publications"
+
+[[navigation]]
+title = "简历"
+type = "page"
+target = "cv"
+href = "/cv"

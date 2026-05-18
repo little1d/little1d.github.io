@@ -11,8 +11,10 @@ import {
 } from '@heroicons/react/24/outline';
 import { MapPinIcon as MapPinSolidIcon, EnvelopeIcon as EnvelopeSolidIcon } from '@heroicons/react/24/solid';
 import { HeartIcon as HeartSolidIcon } from '@heroicons/react/24/solid';
-import { Github, Linkedin, Pin, QrCode } from 'lucide-react';
+import { Github, Globe2, Linkedin, Pin, QrCode } from 'lucide-react';
 import { SiteConfig } from '@/lib/config';
+import { useMessages } from '@/lib/i18n/useMessages';
+import VisitorMap from '@/components/home/VisitorMap';
 
 // Custom ORCID icon component
 const OrcidIcon = ({ className }: { className?: string }) => (
@@ -34,6 +36,7 @@ interface ProfileProps {
 }
 
 export default function Profile({ author, social, features, researchInterests }: ProfileProps) {
+    const messages = useMessages();
 
     const [hasLiked, setHasLiked] = useState(false);
     const [showThanks, setShowThanks] = useState(false);
@@ -71,13 +74,13 @@ export default function Profile({ author, social, features, researchInterests }:
 
     const socialLinks = [
         ...(social.email ? [{
-            name: 'Email',
+            name: messages.profile.email,
             href: `mailto:${social.email}`,
             icon: EnvelopeIcon,
             isEmail: true,
         }] : []),
         ...(social.location || social.location_details ? [{
-            name: 'Location',
+            name: messages.profile.location,
             href: social.location_url || '#',
             icon: MapPinIcon,
             isLocation: true,
@@ -190,11 +193,11 @@ export default function Profile({ author, social, features, researchInterests }:
                                         >
                                             <div className="text-center">
                                                 <div className="flex items-center justify-center space-x-2 mb-1">
-                                                    <p className="font-semibold">Work Address</p>
+                                                    <p className="font-semibold">{messages.profile.workAddress}</p>
                                                     {!isAddressPinned && (
                                                         <div className="flex items-center space-x-0.5 text-xs text-neutral-400 opacity-60">
                                                             <Pin className="h-2.5 w-2.5" />
-                                                            <span className="hidden sm:inline">Click</span>
+                                                            <span className="hidden sm:inline">{messages.profile.click}</span>
                                                         </div>
                                                     )}
                                                 </div>
@@ -210,7 +213,7 @@ export default function Profile({ author, social, features, researchInterests }:
                                                             className="inline-flex items-center justify-center space-x-2 bg-accent hover:bg-accent-dark text-white px-3 py-1 rounded-md text-xs font-medium transition-colors duration-200 w-full sm:w-auto"
                                                         >
                                                             <MapPinIcon className="h-4 w-4" />
-                                                            <span>Google Map</span>
+                                                            <span>{messages.profile.googleMap}</span>
                                                         </a>
                                                     )}
                                                 </div>
@@ -267,11 +270,11 @@ export default function Profile({ author, social, features, researchInterests }:
                                         >
                                             <div className="text-center">
                                                 <div className="flex items-center justify-center space-x-2 mb-1">
-                                                    <p className="font-semibold">Email</p>
+                                                    <p className="font-semibold">{messages.profile.email}</p>
                                                     {!isEmailPinned && (
                                                         <div className="flex items-center space-x-0.5 text-xs text-neutral-400 opacity-60">
                                                             <Pin className="h-2.5 w-2.5" />
-                                                            <span className="hidden sm:inline">Click</span>
+                                                            <span className="hidden sm:inline">{messages.profile.click}</span>
                                                         </div>
                                                     )}
                                                 </div>
@@ -282,8 +285,8 @@ export default function Profile({ author, social, features, researchInterests }:
                                                         className="inline-flex items-center justify-center space-x-2 bg-accent hover:bg-accent-dark text-white px-3 py-1 rounded-md text-xs font-medium transition-colors duration-200 w-full sm:w-auto"
                                                     >
                                                         <EnvelopeIcon className="h-4 w-4" />
-                                                        <span className="sm:hidden">Send</span>
-                                                        <span className="hidden sm:inline">Send Email</span>
+                                                        <span className="sm:hidden">{messages.profile.send}</span>
+                                                        <span className="hidden sm:inline">{messages.profile.sendEmail}</span>
                                                     </a>
                                                 </div>
                                             </div>
@@ -332,7 +335,7 @@ export default function Profile({ author, social, features, researchInterests }:
                                         >
                                             <div className="text-center space-y-2">
                                                 <div className="flex items-center justify-center space-x-2">
-                                                    <p className="font-semibold">WeChat</p>
+                                                    <p className="font-semibold">{messages.profile.wechat}</p>
                                                 </div>
                                                 {social.wechat && (
                                                     <p className="text-xs text-neutral-300 break-all">{social.wechat}</p>
@@ -354,7 +357,7 @@ export default function Profile({ author, social, features, researchInterests }:
                                                             />
                                                         </div>
                                                         <p className="mt-1 text-[11px] text-neutral-300 underline underline-offset-4 text-center">
-                                                            Click to view full size
+                                                            {messages.profile.clickToViewFullSize}
                                                         </p>
                                                     </a>
                                                 )}
@@ -395,7 +398,7 @@ export default function Profile({ author, social, features, researchInterests }:
             {/* Research Interests */}
             {researchInterests && researchInterests.length > 0 && (
                 <div className="bg-neutral-100 dark:bg-neutral-800 rounded-lg p-4 mb-6 hover:shadow-lg transition-all duration-200 hover:scale-[1.02]">
-                    <h3 className="font-semibold text-primary mb-3">Research Interests</h3>
+                    <h3 className="font-semibold text-primary mb-3">{messages.profile.researchInterests}</h3>
                     <div className="space-y-2 text-sm text-neutral-700 dark:text-neutral-500">
                         {researchInterests.map((interest, index) => (
                             <div key={index}>{interest}</div>
@@ -422,7 +425,7 @@ export default function Profile({ author, social, features, researchInterests }:
                             ) : (
                                 <HeartIcon className="h-4 w-4" />
                             )}
-                            <span>{hasLiked ? 'Liked' : 'Like'}</span>
+                            <span>{hasLiked ? messages.profile.liked : messages.profile.like}</span>
                         </motion.button>
 
                         {/* Thanks bubble */}
@@ -434,12 +437,26 @@ export default function Profile({ author, social, features, researchInterests }:
                                     exit={{ opacity: 0, y: -20, scale: 0.8 }}
                                     className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full bg-accent text-white px-4 py-2 rounded-lg text-sm font-medium shadow-lg whitespace-nowrap"
                                 >
-                                    Thanks! 😊
+                                    {messages.profile.thanks} 😊
                                     <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-accent"></div>
                                 </motion.div>
                             )}
                         </AnimatePresence>
                     </div>
+                </div>
+            )}
+
+            {features.enable_visitor_map !== false && (
+                <div className="mt-4 rounded-lg border border-neutral-200/80 bg-neutral-50/80 p-3 shadow-sm transition-all duration-200 hover:shadow-md dark:border-neutral-700/70 dark:bg-neutral-800/70">
+                    <div className="mb-2 flex items-center justify-center gap-2 text-xs font-medium uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+                        <Globe2 className="h-3.5 w-3.5" aria-hidden="true" />
+                        <span>{messages.profile.visitorMap}</span>
+                    </div>
+                    <VisitorMap
+                        scriptSrc={features.visitor_map_script_src}
+                        linkHref={features.visitor_map_link}
+                        pendingText={messages.profile.visitorMapPending}
+                    />
                 </div>
             )}
         </motion.div>

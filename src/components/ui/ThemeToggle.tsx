@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { SunIcon, MoonIcon, ComputerDesktopIcon } from '@heroicons/react/24/outline';
 import { useThemeStore, type Theme } from '@/lib/stores/themeStore';
 import { cn } from '@/lib/utils';
+import { useMessages } from '@/lib/i18n/useMessages';
 
 const themes: { value: Theme; label: string; icon: React.ReactNode }[] = [
   {
@@ -27,6 +28,7 @@ const themes: { value: Theme; label: string; icon: React.ReactNode }[] = [
 export function ThemeToggle() {
   const { theme, setTheme } = useThemeStore();
   const [mounted, setMounted] = useState(false);
+  const messages = useMessages();
 
   useEffect(() => {
     setMounted(true);
@@ -41,6 +43,7 @@ export function ThemeToggle() {
   }
 
   const currentTheme = themes.find(t => t.value === theme) || themes[0];
+  const currentThemeLabel = messages.theme[currentTheme.value];
 
   return (
     <div className="relative">
@@ -62,7 +65,7 @@ export function ThemeToggle() {
           'transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50',
           'text-neutral-600 hover:text-primary dark:text-neutral-400 dark:hover:text-white'
         )}
-        title={`Current theme: ${currentTheme.label}. Click to cycle theme.`}
+        title={`${messages.theme.currentTheme}: ${currentThemeLabel}. ${messages.theme.cycleTheme}.`}
       >
         <motion.div
           key={theme}
@@ -87,6 +90,7 @@ export function ThemeToggleDropdown() {
   const { theme, setTheme } = useThemeStore();
   const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const messages = useMessages();
 
   useEffect(() => {
     setMounted(true);
@@ -117,7 +121,7 @@ export function ThemeToggleDropdown() {
           'transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50',
           'text-neutral-600 hover:text-primary dark:text-neutral-400 dark:hover:text-white'
         )}
-        title={`Current theme: ${currentTheme.label}`}
+        title={`${messages.theme.currentTheme}: ${messages.theme[currentTheme.value]}`}
       >
         <motion.div
           key={theme}
@@ -158,7 +162,7 @@ export function ThemeToggleDropdown() {
                 )}
               >
                 <span className="mr-2">{themeOption.icon}</span>
-                {themeOption.label}
+                {messages.theme[themeOption.value]}
               </button>
             ))}
           </div>

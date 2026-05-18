@@ -1,7 +1,33 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import ReactMarkdown from 'react-markdown';
 import { CardPageConfig } from '@/types/page';
+
+const markdownComponents = {
+    p: ({ children }: React.ComponentProps<'p'>) => <p className="mb-3 last:mb-0">{children}</p>,
+    ul: ({ children }: React.ComponentProps<'ul'>) => <ul className="list-disc list-inside mb-3 space-y-1">{children}</ul>,
+    ol: ({ children }: React.ComponentProps<'ol'>) => <ol className="list-decimal list-inside mb-3 space-y-1">{children}</ol>,
+    li: ({ children }: React.ComponentProps<'li'>) => <li className="mb-1">{children}</li>,
+    a: ({ ...props }) => (
+        <a
+            {...props}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-accent font-medium transition-all duration-200 rounded hover:bg-accent/10 hover:shadow-sm"
+        />
+    ),
+    blockquote: ({ children }: React.ComponentProps<'blockquote'>) => (
+        <blockquote className="border-l-4 border-accent/50 pl-4 italic my-4 text-neutral-600 dark:text-neutral-500">
+            {children}
+        </blockquote>
+    ),
+    strong: ({ children }: React.ComponentProps<'strong'>) => <strong className="font-semibold text-primary">{children}</strong>,
+    em: ({ children }: React.ComponentProps<'em'>) => <em className="italic">{children}</em>,
+    code: ({ children }: React.ComponentProps<'code'>) => (
+        <code className="px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-[0.95em]">{children}</code>
+    ),
+};
 
 export default function CardPage({ config, embedded = false }: { config: CardPageConfig; embedded?: boolean }) {
     return (
@@ -13,9 +39,11 @@ export default function CardPage({ config, embedded = false }: { config: CardPag
             <div className={embedded ? "mb-4" : "mb-8"}>
                 <h1 className={`${embedded ? "text-2xl" : "text-4xl"} font-serif font-bold text-primary mb-4`}>{config.title}</h1>
                 {config.description && (
-                    <p className={`${embedded ? "text-base" : "text-lg"} text-neutral-600 dark:text-neutral-500 max-w-2xl`}>
-                        {config.description}
-                    </p>
+                    <div className={`${embedded ? "text-base" : "text-lg"} text-neutral-600 dark:text-neutral-500 max-w-2xl leading-relaxed`}>
+                        <ReactMarkdown components={markdownComponents}>
+                            {config.description}
+                        </ReactMarkdown>
+                    </div>
                 )}
             </div>
 
@@ -40,9 +68,11 @@ export default function CardPage({ config, embedded = false }: { config: CardPag
                             <p className={`${embedded ? "text-sm" : "text-base"} text-accent font-medium mb-3`}>{item.subtitle}</p>
                         )}
                         {item.content && (
-                            <p className={`${embedded ? "text-sm" : "text-base"} text-neutral-600 dark:text-neutral-500 leading-relaxed`}>
-                                {item.content}
-                            </p>
+                            <div className={`${embedded ? "text-sm" : "text-base"} text-neutral-600 dark:text-neutral-500 leading-relaxed`}>
+                                <ReactMarkdown components={markdownComponents}>
+                                    {item.content}
+                                </ReactMarkdown>
+                            </div>
                         )}
                         {item.tags && (
                             <div className="flex flex-wrap gap-2 mt-4">

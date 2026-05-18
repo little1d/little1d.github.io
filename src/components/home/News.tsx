@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
+import { useMessages } from '@/lib/i18n/useMessages';
 
 export interface NewsItem {
     date: string;
@@ -13,14 +14,17 @@ interface NewsProps {
     title?: string;
 }
 
-export default function News({ items, title = 'News' }: NewsProps) {
+export default function News({ items, title }: NewsProps) {
+    const messages = useMessages();
+    const resolvedTitle = title || messages.home.news;
+
     return (
         <motion.section
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
         >
-            <h2 className="text-2xl font-serif font-bold text-primary mb-4">{title}</h2>
+            <h2 className="text-2xl font-serif font-bold text-primary mb-4">{resolvedTitle}</h2>
             <div className="space-y-3">
                 {items.map((item, index) => (
                     <div key={index} className="flex items-start space-x-3">

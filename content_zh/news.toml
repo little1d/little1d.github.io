@@ -1,0 +1,23 @@
+[[news]]
+date = "2026-5"
+content = "我们的工作 SpectrumWorld 和 NMRTrans 被 [KDD AI4Science Track](https://kdd2026.kdd.org/) 接收🎉。我分别是一作和共同二作。"
+
+[[news]]
+date = "2026-5"
+content = "我们的工作 [NMRGym](https://arxiv.org/abs/2601.15763) 被 KDD D&B Track 2026 接收🎉。祝贺 Zheng Fang 同学和 Jun Xia 老师！"
+
+[[news]]
+date = "2026-5"
+content = "我们的工作 Reasoning BO 被 [MGEAdvance](https://onlinelibrary.wiley.com/journal/29409497) 接收，我是一作。"
+
+[[news]]
+date = "2026-4"
+content = "我们发布了 [ChemClaw](https://github.com/InternScience/ChemClaw)，一个面向化学的模块化技能智能体框架。"
+
+[[news]]
+date = "2025-11"
+content = "我们的工作 [QCBench](https://pubs.acs.org/doi/10.1021/acs.jcim.5c02033) 被 JCIM 接收🎉，祝贺 Jiaqing Xie！"
+
+[[news]]
+date = "2025-8"
+content = "我们的工具 [SpectrumLab](https://github.com/little1d/SpectrumLab) 开源了。这是一个面向光谱深度学习研究的统一平台。"

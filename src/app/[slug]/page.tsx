@@ -2,22 +2,21 @@ import { notFound } from 'next/navigation';
 import { getPageConfig, getMarkdownContent, getBibtexContent } from '@/lib/content';
 import { getConfig } from '@/lib/config';
 import { parseBibTeX } from '@/lib/bibtexParser';
-import PublicationsList from '@/components/publications/PublicationsList';
-import TextPage from '@/components/pages/TextPage';
-import CardPage from '@/components/pages/CardPage';
+import DynamicPageClient, { type DynamicPageLocaleData } from '@/components/pages/DynamicPageClient';
 import {
     BasePageConfig,
     PublicationPageConfig,
     TextPageConfig,
     CardPageConfig
 } from '@/types/page';
+import { getRuntimeI18nConfig } from '@/lib/i18n/config';
 
 import { Metadata } from 'next';
 
 export function generateStaticParams() {
     const config = getConfig();
     return config.navigation
-        .filter(nav => nav.type === 'page' && nav.target !== 'about') // 'about' is handled by root page
+        .filter(nav => nav.type === 'page' && nav.target !== 'about')
         .map(nav => ({
             slug: nav.target,
         }));
@@ -37,36 +36,66 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     };
 }
 
-export default async function DynamicPage({ params }: { params: Promise<{ slug: string }> }) {
-    const { slug } = await params;
-    const pageConfig = getPageConfig(slug) as BasePageConfig | null;
+function loadDynamicPageData(slug: string, locale?: string): DynamicPageLocaleData | null {
+    const pageConfig = getPageConfig(slug, locale) as BasePageConfig | null;
 
     if (!pageConfig) {
+        return null;
+    }
+
+    if (pageConfig.type === 'publication') {
+        const config = pageConfig as PublicationPageConfig;
+        const bibtex = getBibtexContent(config.source, locale);
+        return {
+            type: 'publication',
+            config,
+            publications: parseBibTeX(bibtex),
+        };
+    }
+
+    if (pageConfig.type === 'text') {
+        const config = pageConfig as TextPageConfig;
+        return {
+            type: 'text',
+            config,
+            content: getMarkdownContent(config.source, locale),
+        };
+    }
+
+    if (pageConfig.type === 'card') {
+        return {
+            type: 'card',
+            config: pageConfig as CardPageConfig,
+        };
+    }
+
+    return null;
+}
+
+export default async function DynamicPage({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
+    const baseConfig = getConfig();
+    const runtimeI18n = getRuntimeI18nConfig(baseConfig.i18n);
+    const targetLocales = runtimeI18n.enabled ? runtimeI18n.locales : [runtimeI18n.defaultLocale];
+    const dataByLocale: Record<string, DynamicPageLocaleData> = {};
+
+    for (const locale of targetLocales) {
+        const data = loadDynamicPageData(slug, locale);
+        if (data) {
+            dataByLocale[locale] = data;
+        }
+    }
+
+    if (!dataByLocale[runtimeI18n.defaultLocale]) {
+        const fallback = loadDynamicPageData(slug);
+        if (fallback) {
+            dataByLocale[runtimeI18n.defaultLocale] = fallback;
+        }
+    }
+
+    if (Object.keys(dataByLocale).length === 0) {
         notFound();
     }
 
-    return (
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            {pageConfig.type === 'publication' && (
-                <PublicationPage config={pageConfig as PublicationPageConfig} />
-            )}
-            {pageConfig.type === 'text' && (
-                <TextPageWrapper config={pageConfig as TextPageConfig} />
-            )}
-            {pageConfig.type === 'card' && (
-                <CardPage config={pageConfig as CardPageConfig} />
-            )}
-        </div>
-    );
-}
-
-function PublicationPage({ config }: { config: PublicationPageConfig }) {
-    const bibtex = getBibtexContent(config.source);
-    const publications = parseBibTeX(bibtex);
-    return <PublicationsList config={config} publications={publications} />;
-}
-
-function TextPageWrapper({ config }: { config: TextPageConfig }) {
-    const content = getMarkdownContent(config.source);
-    return <TextPage config={config} content={content} />;
+    return <DynamicPageClient dataByLocale={dataByLocale} defaultLocale={runtimeI18n.defaultLocale} />;
 }
