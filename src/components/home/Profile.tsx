@@ -453,9 +453,12 @@ export default function Profile({ author, social, features, researchInterests }:
                         <span>{messages.profile.visitorMap}</span>
                     </div>
                     <VisitorMap
+                        scriptId={features.visitor_map_script_id}
                         scriptSrc={features.visitor_map_script_src}
                         linkHref={features.visitor_map_link}
+                        linkLabel={messages.profile.visitorMap}
                         pendingText={messages.profile.visitorMapPending}
+                        unavailableText={messages.profile.visitorMapUnavailable}
                     />
                 </div>
             )}

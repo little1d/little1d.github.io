@@ -1,0 +1,20 @@
+title = "Blog"
+description = "Notes on AI for science, protein design, and learning systems."
+
+[[posts]]
+slug = "on-policy-distillation-for-antibody-design"
+title = "Why On-Policy Distillation Fits Antibody CDR Design"
+date = "2026-07-28"
+summary = "A short note on distribution mismatch in antibody generation and the motivation behind ABOPD."
+tags = ["Antibody Design", "On-Policy Distillation", "ABOPD"]
+source = "blog/MoE.md"
+status = "draft"
+
+[[posts]]
+slug = "scientific-foundation-llms"
+title = "Toward Native Scientific Generation"
+date = "2026-07-28"
+summary = "Notes toward a unified definition of scientific foundation models that reason over and generate native scientific modalities."
+tags = ["Scientific LLMs", "Multimodal Generation", "AI for Science"]
+source = "blog/scientific-foundation-llms.md"
+status = "published"

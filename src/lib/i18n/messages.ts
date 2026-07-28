@@ -29,6 +29,7 @@ export interface LocaleMessages {
     thanks: string;
     visitorMap: string;
     visitorMapPending: string;
+    visitorMapUnavailable: string;
   };
   home: {
     about: string;
@@ -84,7 +85,8 @@ const en: LocaleMessages = {
     liked: 'Liked',
     thanks: 'Thanks!',
     visitorMap: 'Visitor Map',
-    visitorMapPending: 'Paste your ClustrMaps script in content/config.toml.',
+    visitorMapPending: 'Configure the visitor map script in content/config.toml.',
+    visitorMapUnavailable: 'Visitor map is temporarily unavailable.',
   },
   home: {
     about: 'About',
@@ -140,7 +142,8 @@ const zh: LocaleMessages = {
     liked: '已点赞',
     thanks: '感谢支持！',
     visitorMap: '访客地图',
-    visitorMapPending: '请在 content/config.toml 中填入 ClustrMaps 脚本。',
+    visitorMapPending: '请在 content/config.toml 中配置访客地图脚本。',
+    visitorMapUnavailable: '访客地图暂时无法加载。',
   },
   home: {
     about: '关于我',

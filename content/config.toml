@@ -1,14 +1,14 @@
 [site]
 title = "Yang Zhuo"
 # description = "PhD student at the Southeast University & Shanghai Innovation Institute."
-description = "Undergraduate Student at Xidian University"
+description = "PhD Candidate at Southeast University"
 favicon = "/favicon.svg"
 last_updated = "May 18, 2026"
 
 [author]
 name = "Yang Zhuo"
-title = "Undergraduate Student"
-institution = "Xidian University"
+title = "PhD Candidate"
+institution = "Southeast University"
 avatar = "/bio.png"
 
 [social]
@@ -34,9 +34,10 @@ enable_likes = true
 
 # Show the visitor map below the like button
 enable_visitor_map = true
-# ClustrMaps JavaScript widget.
-visitor_map_script_src = "https://clustrmaps.com/map_v2.js?d=xSCUrosanbtv17O_BGtFGdYHgdFGpO41o2Udu8giehw&cl=ffffff&w=a"
-visitor_map_link = "https://clustrmaps.com/site/1ca16"
+# MapMyVisitors JavaScript widget. The script must be mounted inside the page body.
+visitor_map_script_id = "mapmyvisitors"
+visitor_map_script_src = "https://mapmyvisitors.com/map.js?d=KuGCKJ74dLRYcREEmlV5cr6UmRy4DP6kMf130yLLbd0&cl=ffffff&w=a"
+visitor_map_link = "https://mapmyvisitors.com/web/1c6xk"
 
 # Display all subpages on a single page
 enable_one_page_mode = false
@@ -64,6 +65,12 @@ title = "Publications"
 type = "page"
 target = "publications"
 href = "/publications"
+
+[[navigation]]
+title = "Blog"
+type = "link"
+target = "blog"
+href = "/blog"
 
 # [[navigation]]
 # title = "Teaching"

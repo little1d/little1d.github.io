@@ -1,13 +1,13 @@
 [site]
 title = "Yang Zhuo"
-description = "西安电子科技大学人工智能专业本科生"
+description = "东南大学博士研究生"
 favicon = "/favicon.svg"
 last_updated = "2026 年 5 月 18 日"
 
 [author]
 name = "Yang Zhuo"
-title = "本科生"
-institution = "西安电子科技大学"
+title = "博士研究生"
+institution = "东南大学"
 avatar = "/bio.png"
 
 [social]
@@ -34,6 +34,12 @@ title = "论文"
 type = "page"
 target = "publications"
 href = "/publications"
+
+[[navigation]]
+title = "博客"
+type = "link"
+target = "blog"
+href = "/blog"
 
 [[navigation]]
 title = "简历"

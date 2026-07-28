@@ -207,14 +207,43 @@ body {
   border-radius: 0.375rem;
 }
 
-.visitor-map-widget #clustrmaps-widget-v2 {
-  max-width: 100%;
-}
-
 .visitor-map-widget a {
   display: inline-flex;
   justify-content: center;
   max-width: 100%;
+}
+
+.blog-markdown [data-footnotes] {
+  margin-top: 3rem;
+  border-top: 1px solid var(--neutral-200);
+  padding-top: 1.5rem;
+  font-size: 0.875rem;
+}
+
+.blog-markdown [data-footnotes] h2 {
+  margin-bottom: 1rem;
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.blog-markdown [data-footnote-ref] {
+  margin-left: 0.1rem;
+  font-weight: 600;
+  color: var(--accent-dark);
+}
+
+.blog-markdown [data-footnote-backref] {
+  margin-left: 0.25rem;
+  text-decoration: none;
+}
+
+.blog-markdown .katex-display {
+  margin: 1.75rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25rem 0;
 }
 
 /* Custom scrollbar */

@@ -1,0 +1,20 @@
+title = "博客"
+description = "关于 AI for Science、蛋白质设计与学习系统的笔记。"
+
+[[posts]]
+slug = "on-policy-distillation-for-antibody-design"
+title = "为什么 On-Policy Distillation 适合抗体 CDR 设计"
+date = "2026-07-28"
+summary = "讨论抗体生成中的分布偏移问题，以及 ABOPD 背后的核心动机。"
+tags = ["抗体设计", "On-Policy Distillation", "ABOPD"]
+source = "blog/MoE.md"
+status = "draft"
+
+[[posts]]
+slug = "scientific-foundation-llms"
+title = "迈向原生科学生成"
+date = "2026-07-28"
+summary = "关于统一科学基础模型的一些思考：在共享表示中理解科学对象，并以原生模态完成生成。"
+tags = ["科学大模型", "多模态生成", "AI for Science"]
+source = "blog/scientific-foundation-llms.md"
+status = "published"

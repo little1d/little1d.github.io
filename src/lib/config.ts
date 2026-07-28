@@ -32,6 +32,7 @@ export interface SiteConfig {
     features: {
         enable_likes: boolean;
         enable_visitor_map?: boolean;
+        visitor_map_script_id?: string;
         visitor_map_script_src?: string;
         visitor_map_link?: string;
         enable_one_page_mode?: boolean;

@@ -1,3 +1,21 @@
+@article{yang2026abopd,
+  selected      = {true},
+  title         = {ABOPD: Antibody CDR Design via On-Policy Distillation},
+  author        = {Zhuo Yang and Jiaying He and Jiaqing Xie and Daolang Wang and Xipeng Qiu and Yuxin Wang and Tianfan Fu and Beilun Wang},
+  year          = {2026},
+  month         = {jul},
+  eprint        = {2607.18835},
+  archiveprefix = {arXiv},
+  primaryclass  = {cs.LG},
+  url           = {https://arxiv.org/abs/2607.18835},
+  preview       = {ABOPD.png},
+  code          = {https://github.com/little1d/ABOPD},
+  datasets      = {https://huggingface.co/collections/little1d/abopd},
+  langid        = {english},
+  abstract      = {Antibodies are essential therapeutic molecules, and their complementarity-determining regions (CDRs) form the primary antigen-recognition interface. Recent protein generative models have demonstrated broad capabilities in biomolecular design, yet post-training strategies for downstream objectives remain limited. Standard denoising training operates on noisy states obtained by perturbing native structures, whereas recursive generation proceeds through model-generated intermediate states. For flexible antibody CDR loops such as CDR-H3, this mismatch can allow backbone deviations to accumulate along the denoising trajectory and compromise antigen-facing loop geometry. We introduce ABOPD, an antibody design framework based on on-policy distillation that leverages privileged native geometry during training to supervise states visited along the model's own denoising trajectories. With this fine-grained structural supervision, ABOPD substantially improves structural recovery on RAbD CDR-H3 generation, reducing RMSD by 0.42 Å (from 2.37 Å to 1.95 Å) and outperforming supervised fine-tuning and offline distillation controls, offering a path to higher-fidelity protein design.},
+  keywords      = {Antibody Design, CDR Design, On-Policy Distillation, Protein Generative Models}
+}
+
 @article{shen2025molspectllmmolecularfoundationmodel,
   title    = {MolSpectLLM: A Molecular Foundation Model Bridging Spectroscopy, Molecule Elucidation, and 3D Structure Generation},
   author   = {Shuaike Shen# and Jiaqing Xie# and Zhuo Yang and Antong Zhang and Shuzhou Sun and Ben Gao and Tianfan Fu and Biqing Qi and Yuqiang Li*},
