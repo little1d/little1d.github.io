@@ -125,7 +125,7 @@ export default function BlogPostClient({ dataByLocale, defaultLocale }: BlogPost
       <div className="blog-markdown leading-relaxed text-neutral-700 dark:text-neutral-600">
         <ReactMarkdown
           remarkPlugins={[remarkGfm, remarkMath]}
-          rehypePlugins={[rehypeKatex, rehypeSlug]}
+          rehypePlugins={[[rehypeKatex, { output: 'html' }], rehypeSlug]}
           remarkRehypeOptions={{
             footnoteLabel: 'References',
             footnoteBackLabel: 'Back to reference',
