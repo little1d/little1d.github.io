@@ -18,3 +18,12 @@ summary = "关于统一科学基础模型的一些思考：在共享表示中理
 tags = ["科学大模型", "多模态生成", "AI for Science"]
 source = "blog/scientific-foundation-llms.md"
 status = "published"
+
+[[posts]]
+slug = "understanding-moe-mot-and-mol"
+title = "理解 MoE、MoT 与 MoL"
+date = "2026-08-03"
+summary = "关于 Mixture of Experts、Mixture of Transformers 与 Mixture of LoRA 的笔记。"
+tags = ["Model Architecture"]
+source = "blog/understanding-moe-mot-and-mol.md"
+status = "published"

@@ -18,3 +18,12 @@ summary = "Notes toward a unified definition of scientific foundation models tha
 tags = ["Scientific LLMs", "Multimodal Generation", "AI for Science"]
 source = "blog/scientific-foundation-llms.md"
 status = "published"
+
+[[posts]]
+slug = "understanding-moe-mot-and-mol"
+title = "Understanding MoE, MoT, and MoL"
+date = "2026-08-03"
+summary = "Notes on Mixture of Experts, Mixture of Transformers, and Mixture of LoRA."
+tags = ["Model Architecture"]
+source = "blog/understanding-moe-mot-and-mol.md"
+status = "published"
