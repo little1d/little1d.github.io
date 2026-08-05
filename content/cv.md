@@ -1,6 +1,6 @@
 ## Education
 
-**Southeast University (SEU)**, Ph.D. Student (Incoming), *Starting 2026*
+**Southeast University (SEU)**, Ph.D. Student, *2026 - Present*
 
 - Jointly trained with **Shanghai Innovation Institute**.
 - Supervisors: Prof. Tianfan Fu and Prof. Beilun Wang.
@@ -12,8 +12,14 @@
 ## Experience
 
 **Research Intern**
+ByteDance Seed
+*2026 - Present*
+
+- Exploring **Scientific Foundation LLMs** and **Antibody Design**.
+
+**Research Intern**
 Shanghai Innovation Institute / Fudan NLP, OpenMOSS Group
-*Mar 2026 - Present*
+*Mar 2026 - Aug 2026*
 
 - Working on **agents for antibody design**.
 
